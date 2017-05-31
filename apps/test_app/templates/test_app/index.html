@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'test_app/css/style.css' %}">
+</head>
+<body>
+
+
+{% if messages %}
+	<ul class="messages_yellow">
+    {% for message in messages %}
+    	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+	</ul>
+{% endif %}
+
+	<h2>Login:</h2>
+	<form action="/login" method="post">
+		{% csrf_token %} 
+		email:<input type="text" name="email"><br>
+		password:<input type="password" name="password"><br>
+		<input type="submit" value="Login"><br>
+	</form>
+
+	<h2>Register:</h2>
+	<form action="/register" method="post">
+		{% csrf_token %} 
+		first name:<input type="text" name="first_name"><br>
+		last_name:<input type="text" name="last_name"><br>
+		email:<input type="text" name="email"><br>
+		<strong>*Password should be at least 8 characters</strong><br>
+		password<input type="password" name="password"><br>
+		confirm password:<input type="password" name="confirm"><br>
+		Date: <input type="date" id="myDate" value="2017-05-31"><br>
+		<input type="submit" name="Register"><br>
+	</form>
+
+	
+
+</body>
+</html>
