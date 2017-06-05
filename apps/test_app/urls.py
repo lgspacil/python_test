@@ -12,6 +12,7 @@ urlpatterns = [
   url(r'^add_your_list/(?P<id>\d+)$', views.add_your_list),
   url(r'^remove_wish_list/(?P<id>\d+)$', views.remove_wish_list),
   url(r'^item_detail/(?P<id>\d+)$', views.item_detail),
+  url(r'^money$', views.money),
 
    
 

@@ -139,3 +139,6 @@ def item_detail(request, id):
 	# print context['users'][0].adders.all()
 
 	return render(request, 'test_app/item_detail.html', context)
+
+def money(request):
+	return render(request, 'test_app/money.html')

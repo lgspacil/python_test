@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Currency App</title>
+
+	<style type="text/css">
+		form{
+			text-align: center;
+		}
+		#result {
+			/*background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/HPOKFbR/dramatic-sky-dark-stormy-raining-clouds-time-lapse-footage-weather-forecast-climate-change-or-passing-of-time-background-footage_edn7g_eox__S0000.jpg");*/
+			background-size: contain; 
+			height: 280px;
+			width: 500px;
+			text-align: center;
+			margin: auto;
+		}
+
+		#line1{
+			display: inline-block;
+		}
+		#line2{
+			display: inline-block;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script>
+		$(document).ready(function() {
+
+
+		    $('form').submit(function() {
+		        // your code here (build up your url)
+		        var country_id = $('#country_id').val();
+		        var amount = $('#money').val();
+		        var url = "http://api.fixer.io/latest?base="+country_id;
+		        
+
+		        $.get(url, function(res) {
+
+		            var content = "";
+		            
+		            content += "<h2>From "+country_id+" to USD is: </h2>";
+		            content += "<h2>"+res.rates.USD * amount+"</h2>"
+		            
+		            
+
+		            $("#result").html(content);
+		        }, 'json');
+		   
+		        return false;
+		    });
+		});
+
+	</script>
+</head>
+<body>
+	<a href="/success">Home</a>
+
+
+	<form id="form">
+		From <input id="country_id" type="text" name="country_id" value=" ex EUR">to USD<br>
+		How much money would you like to Exchange?: <input id="money" type="text" name="money">
+		<input type="submit" name="submit" value="Search Currency">
+
+	</form>
+
+	<div id="countries">
+		<div id="line1">
+			<ul>
+				<li>AUD</li>
+				<li>BGN</li>
+				<li>BRL</li>
+				<li>CAD</li>
+				<li>CHF</li>
+				<li>CNY</li>
+				<li>CZK</li>
+				<li>DKK</li>
+				<li>GBP</li>
+				<li>HKD</li>
+				<li>HRK</li>
+				<li>HUF</li>
+				<li>IDR</li>
+				<li>ILS</li>
+				<li>INR</li>
+				<li>JPY</li>
+				
+			</ul>
+		</div>
+		<div id="line2">
+			<li>KRW</li>
+			<li>MXN</li>
+			<li>MYR</li>
+			<li>NOK</li>
+			<li>NZD</li>
+			<li>PHP</li>
+			<li>PLN</li>
+			<li>RON</li>
+			<li>RUB</li>
+			<li>SEK</li>
+			<li>SGD</li>
+			<li>THB</li>
+			<li>TRY</li>
+			<li>ZAR</li>
+			<li>EUR</li>
+		</div>
+	</div>
+
+	<div id="result">
+		
+	</div>
+</body>
+</html>
+
